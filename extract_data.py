@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axisartist.axislines import AxesZero
 import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
-from matplotlib.patches import patches
 
 config = {
     "font.family":  'serif',
@@ -19,8 +18,6 @@ config = {
 plt.rcParams.update(config)
 
 pwd = os.path.abspath(os.path.dirname(__file__))
-
-dtpth = "/home/yang/work/CEPC/run_fixed/NUHM2"
 
 # Computes the elementwise minimum of the input arrays
 def bulk_min(x, limit):
@@ -114,17 +111,17 @@ def draw_ax_violin(df, ax, var, bwl=0.05, bwr=0.05, raw=False):
     # ax.yaxis.set_visible(True)
 
 if __name__ == "__main__":
-    switch_cmssm = False
-    switch_nuhm1 = False
-    switch_nuhm2 = False
+    switch_cmssm = True
+    switch_nuhm1 = True
+    switch_nuhm2 = True
     switch_mssm7 = True
 
     # ============== H5DF path and informations ============== #
 
-    dtpth_cmssm = "/home/yang/exdisk/CEPC/results/CMSSM.CMSSM_recal_2023.hdf5" #/cmssm_data
-    dtpth_nuhm1 = "/home/yang/exdisk/CEPC/results/NUHM1/NUHM1_recal_2023.hdf5" #/nuhm1_data
-    dtpth_nuhm2 = "/home/yang/exdisk/CEPC/results/NUHM2/nuhm2_data/NUHM2_recal_2023.hdf5" #/nuhm2_data
-    dtpth_mssm7 = "/home/yang/exdisk/CEPC/results/MSSM7/MSSM7_recal_2023.hdf5" #/MSSM7_data
+    dtpth_cmssm = "../CMSSM_recal_2023.hdf5" #/cmssm_data
+    dtpth_nuhm1 = "../NUHM1_recal_2023.hdf5" #/nuhm1_data
+    dtpth_nuhm2 = "../NUHM2_recal_2023.hdf5" #/nuhm2_data
+    dtpth_mssm7 = "../MSSM7_recal_2023.hdf5" #/MSSM7_data
 
     cmssm_info = { # this is CMSSM !! no mHh mhu !!!!!!!  -- ----- b2sgamma_LL2
             "A0":           "#CMSSM_parameters @CMSSM::primary_parameters::A0",
@@ -457,16 +454,9 @@ if __name__ == "__main__":
         
         ax4.text(0.04, 0.75, r"$\rm MSSM7$", fontsize=16, transform=ax4.transAxes, ha="left", va='top', rotation=90)
     
-
-    rect1 = patches.Rectangle((0, 0), 1, 1, facecolor='red', edgecolor='black', alpha=0.5)
-    rect2 = patches.Rectangle((0, 0), 1, 1, facecolor='blue', edgecolor='black', alpha=0.5)
-
-    handles = [rect1, rect2]
-    labels = ['Line 1', 'Line 2']
-    plt.figlegend(handles, labels, loc='lower right')
     
-    plt.show()
-    # plt.savefig("Summary.png", dpi=300)
+#    plt.show()
+    plt.savefig("Summary.png", dpi=300)
 
 
 
